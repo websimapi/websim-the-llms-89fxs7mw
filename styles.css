@@ -1,0 +1,1252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #e0f5e0;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e0f5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-container {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.logo {
+    text-align: center;
+    animation: pulse 2s infinite alternate;
+}
+
+.logo h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #3cb371;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
+.logo-subtitle {
+    font-size: 1.5rem;
+    color: #000;
+    margin-top: -10px;
+    letter-spacing: 3px;
+}
+
+.loading-bar-container {
+    width: 100%;
+    background-color: #333;
+    height: 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    border: 3px solid #3cb371;
+}
+
+.loading-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(to right, #3cb371, #7fffd4);
+    border-radius: 12px;
+    transition: width 0.5s ease;
+}
+
+.loading-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.loading-tip-container {
+    width: 100%;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 10px;
+    border: 2px solid #3cb371;
+}
+
+.loading-tip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tip-label {
+    font-weight: bold;
+    color: #3cb371;
+}
+
+.tip-text {
+    color: #fff;
+}
+
+#skip-button {
+    padding: 10px 20px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#skip-button:hover {
+    background-color: #2a8c5a;
+}
+
+/* Game Container Styles */
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+#game-container.hidden {
+    display: none;
+}
+
+#city-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.top-menu {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    background-color: rgba(60, 179, 113, 0.5);
+    pointer-events: auto;
+    border-bottom: 1px solid rgba(60, 179, 113, 0.3);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.menu-button {
+    margin-right: 15px;
+    padding: 10px 18px;  
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4)); 
+}
+
+.menu-button:hover {
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6)); 
+}
+
+.resources {
+    display: flex;
+    gap: 15px;
+}
+
+.resource {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.llm-icon {
+    width: 56px;   
+    height: 56px;  
+}
+
+/* Console Panel Styles */
+#console-panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    height: 70%;
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid #3cb371;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 100;
+    pointer-events: auto;
+}
+
+#console-panel.hidden {
+    display: none;
+}
+
+.console-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.console-title {
+    color: #3cb371;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.console-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.console-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.console-button {
+    padding: 8px 16px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.console-button:hover {
+    background-color: #2a8c5a;
+}
+
+.console-content {
+    flex: 1;
+    overflow-y: auto;
+    background-color: rgba(10, 10, 10, 0.9);
+    border-radius: 5px;
+    padding: 10px;
+    color: #fff;
+    font-family: monospace;
+}
+
+.console-indicator {
+    color: #3cb371;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: none;
+}
+
+.console-indicator.visible {
+    display: block;
+}
+
+/* LLM Toggle Styles */
+.llm-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2001;
+}
+
+.llm-toggle-label {
+    color: #333;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.llm-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.llm-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.llm-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.llm-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .llm-toggle-slider {
+    background-color: #3cb371;
+}
+
+input:checked + .llm-toggle-slider:before {
+    transform: translateX(30px);
+}
+
+/* Start Overlay Styles */
+#start-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e0f5e0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.start-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.start-title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.start-title h1 {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #3cb371;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    margin: 0;
+    line-height: 1;
+}
+
+.start-title .subtitle {
+    font-size: 1.5rem;
+    color: #000;
+    letter-spacing: 3px;
+}
+
+.button-arc {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+.circle-button {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    background-color: #3cb371;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    color: white;
+    margin: 0 10px;
+    padding: 0;
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4));
+}
+
+.circle-button svg {
+    display: block;
+}
+
+.circle-button:hover {
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+.main-button {
+    background-color: #3cb371;
+    z-index: 10;
+    width: 80px;
+    height: 80px;
+}
+
+.arc-button-1, .arc-button-3 {
+    transform: translateY(20px);
+}
+
+.arc-button-2, .arc-button-4 {
+    transform: translateY(40px);
+}
+
+#start-button {
+    padding: 15px 30px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    display: none;
+}
+
+/* Rainbow hover effect for Create LLM button */
+.create-llm-btn,
+.move-llm-btn {
+    background: transparent; 
+    position: relative;
+    overflow: visible; 
+    border-radius: 50%; 
+    width: 80px;       
+    height: 80px;      
+    display: flex;     
+    justify-content: center;
+    align-items: center;
+}
+
+.create-llm-btn:hover,
+.move-llm-btn:hover {
+    background: transparent; 
+    transform: scale(1.05);
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6)); 
+}
+
+.create-llm-btn:hover .llm-icon,
+.move-llm-btn:hover .llm-icon {
+    filter: hue-rotate(calc(var(--hue, 0) * 1deg));
+    animation: rainbow-icon 8s ease infinite;
+    transform: perspective(500px) rotateY(10deg) rotateX(5deg); 
+    transition: transform 0.3s ease;
+}
+
+.create-llm-btn::before,
+.move-llm-btn::before {
+    display: none;
+}
+
+.move-llm-btn:hover .propeller {
+    transform-origin: center;
+    animation: spin-propeller 0.5s linear infinite;
+}
+
+@keyframes spin-propeller {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fireworks {
+    0% { transform: scale(0.5); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(0.5); }
+}
+
+@keyframes rainbow-icon {
+    0% { --hue: 0; }
+    20% { --hue: 60; }
+    40% { --hue: 120; }
+    60% { --hue: 180; }
+    80% { --hue: 240; }
+    100% { --hue: 360; }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Style the new Assets UI button */
+.assets-ui-btn {
+    background: transparent; 
+    position: relative;
+    overflow: visible; 
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, filter 0.3s ease; 
+    filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.4)); 
+}
+
+.assets-ui-btn:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.6)); 
+}
+
+.assets-ui-btn .asset-icon {
+     overflow: visible;
+}
+
+.assets-ui-btn .asset-icon .lid {
+    transform-origin: bottom left;
+    transition: transform 0.3s ease-out;
+}
+
+.assets-ui-btn:hover .asset-icon .lid {
+    transform: rotate(-45deg) translate(-2px, -2px);
+}
+
+/* Create LLM UI Styles */
+#create-llm-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+    display: none;
+    flex-direction: row;
+}
+
+#create-llm-ui.active {
+    display: flex;
+}
+
+.create-llm-sidebar {
+    width: 30%;
+    height: 100%;
+    background-color: #1a1a1a;
+    padding: 20px;
+    overflow-y: auto;
+    border-right: 2px solid #3cb371;
+}
+
+.create-llm-main {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.create-llm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #3cb371;
+}
+
+.create-llm-title {
+    color: #3cb371;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.create-llm-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.settings-group {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #222;
+    border-radius: 5px;
+}
+
+.settings-group-title {
+    color: #3cb371;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-label {
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.setting-input, .setting-select {
+    width: 100%;
+    padding: 8px;
+    background-color: #333;
+    border: 1px solid #555;
+    color: white;
+    border-radius: 4px;
+}
+
+.setting-input[type="textarea"], textarea.setting-input {
+    min-height: 80px;
+    resize: vertical;
+    font-family: 'Arial', sans-serif;
+}
+
+.setting-slider {
+    width: 100%;
+    height: 6px;
+    background: #555;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 3px;
+}
+
+.setting-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #3cb371;
+    cursor: pointer;
+}
+
+.setting-value {
+    display: inline-block;
+    color: #3cb371;
+    margin-left: 10px;
+}
+
+.humanoid-viewport {
+    width: 90%;
+    height: 90%;
+    background-color: #111;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 0 0 20px rgba(60, 179, 113, 0.3);
+    overflow: hidden;
+}
+
+.create-llm-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.create-llm-button {
+    padding: 10px 20px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.create-llm-button:hover {
+    background-color: #2a8c5a;
+}
+
+.create-llm-button.secondary {
+    background-color: #444;
+}
+
+.create-llm-button.secondary:hover {
+    background-color: #555;
+}
+
+.generation-status {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #3cb371;
+    height: 20px;
+    flex-grow: 1; 
+    text-align: right; 
+}
+
+.generation-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#generate-character-btn {
+    margin-top: 0; 
+    flex-shrink: 0; 
+}
+
+.icon-button {
+    padding: 8px; 
+    min-width: 40px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.create-llm-button.secondary.icon-button {
+    margin-left: 0; 
+}
+
+#generate-character-btn {
+    margin-top: 10px;
+}
+
+/* Attribute Grid Styles */
+.attribute-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.attribute-item {
+    background-color: #333;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.attribute-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.attribute-name {
+    font-weight: bold;
+    text-transform: capitalize;
+    color: #3cb371;
+}
+
+.attribute-controls {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.attribute-button {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #444;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.attribute-button:hover {
+    background-color: #3cb371;
+}
+
+.attribute-button:disabled {
+    background-color: #555;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.attribute-value {
+    display: flex;
+    width: 100%;
+    height: 20px;
+    background-color: #222;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.attribute-fill {
+    height: 100%;
+    background-color: #3cb371;
+    width: 0%;
+    transition: width 0.3s;
+}
+
+.attribute-description {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.points-info {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-left: 10px;
+    background-color: rgba(60, 179, 113, 0.2);
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* LLM Collection UI Styles */
+#llm-collection-ui {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 200;
+    display: none;
+    flex-direction: column;
+}
+
+#llm-collection-ui.active {
+    display: flex;
+}
+
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-bottom: 2px solid #3cb371;
+}
+
+.collection-title {
+    color: #3cb371;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.collection-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.collection-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.collection-viewport {
+    flex: 2;
+    background-color: #111;
+    position: relative;
+}
+
+.llm-list {
+    flex: 1;
+    background-color: #222;
+    overflow-y: auto;
+    padding: 15px;
+}
+
+.llm-list-item {
+    background-color: #333;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.llm-info h3 {
+    color: #3cb371;
+    margin: 0 0 5px 0;
+}
+
+.llm-type {
+    color: #aaa;
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;
+}
+
+.llm-created {
+    color: #888;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.llm-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.llm-view-btn, .llm-delete-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.llm-view-btn {
+    background-color: #3cb371;
+    color: white;
+}
+
+.llm-delete-btn {
+    background-color: #ff4444;
+    color: white;
+}
+
+.empty-collection {
+    color: #aaa;
+    text-align: center;
+    padding: 50px;
+}
+
+.collection-footer {
+    padding: 15px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: center;
+}
+
+.collection-button {
+    padding: 10px 20px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* LLM Details Panel Styles */
+#llm-details-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    background-color: #333;
+    border-radius: 5px;
+    z-index: 300;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+#llm-details-panel.active {
+    display: block;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #3cb371;
+    border-radius: 5px 5px 0 0;
+}
+
+.details-title {
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.details-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.details-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.llm-detail-name {
+    color: #3cb371;
+    margin: 0;
+}
+
+.edit-llm-btn {
+    padding: 8px 16px;
+    background-color: #3cb371;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    align-self: flex-start;
+}
+
+.edit-llm-btn:hover {
+    background-color: #2a8c5a;
+}
+
+.llm-detail-model, .llm-detail-created {
+    color: #aaa;
+    margin: 0;
+}
+
+.llm-detail-viewport {
+    width: 100%;
+    height: 300px;
+    background-color: #111;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 15px 0;
+}
+
+.llm-detail-attributes {
+    margin-top: 15px;
+}
+
+.detail-attribute-item {
+    margin-bottom: 10px;
+}
+
+.detail-attribute-name {
+    color: white;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+}
+
+.detail-attribute-bar {
+    height: 15px;
+    background-color: #222;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.detail-attribute-fill {
+    height: 100%;
+    background-color: #3cb371;
+    width: 0%;
+}
+
+/* Credits Panel Styles */
+#credits-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 700px;
+    height: 80%;
+    max-height: 600px;
+    background-color: rgba(30, 30, 30, 0.95);
+    border: 2px solid #3cb371;
+    border-radius: 10px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    z-index: 3000;
+    pointer-events: auto;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+#credits-panel.hidden {
+    display: none;
+}
+
+.credits-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #3cb371;
+    padding: 12px 20px;
+    border-bottom: 2px solid #2a8c5a;
+}
+
+.credits-title {
+    color: white;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.credits-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+    transition: color 0.2s;
+}
+
+.credits-close:hover {
+    color: #eee;
+}
+
+.credits-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    color: #eee;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+.credits-content h1,
+.credits-content h2,
+.credits-content h3 {
+    color: #3cb371;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border-bottom: 1px solid rgba(60, 179, 113, 0.3);
+    padding-bottom: 5px;
+}
+
+.credits-content h1 { font-size: 1.8em; }
+.credits-content h2 { font-size: 1.5em; }
+.credits-content h3 { font-size: 1.2em; }
+
+.credits-content p {
+    margin-bottom: 1em;
+}
+
+.credits-content a {
+    color: #7fffd4;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.credits-content a:hover {
+    color: #3cb371;
+    text-decoration: underline;
+}
+
+.credits-content ul,
+.credits-content ol {
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+
+.credits-content li {
+    margin-bottom: 0.5em;
+}
+
+.credits-content code {
+    background-color: #111;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.credits-content pre {
+    background-color: #111;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin-bottom: 1em;
+}
+
+.credits-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.loading-credits {
+    font-style: italic;
+    color: #aaa;
+    text-align: center;
+    padding: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    #credits-panel {
+        width: 95%;
+        height: 90%;
+    }
+    .credits-title {
+        font-size: 1.4rem;
+    }
+    .credits-close {
+        font-size: 1.6rem;
+    }
+    .credits-content {
+        padding: 15px;
+        font-size: 0.95rem;
+    }
+}

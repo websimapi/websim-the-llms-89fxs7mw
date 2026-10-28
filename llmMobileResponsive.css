@@ -1,0 +1,150 @@
+/* Mobile responsive styles for Create LLM UI */
+@media screen and (max-width: 768px) {
+    #create-llm-ui {
+        flex-direction: column;
+    }
+    
+    .create-llm-sidebar {
+        width: 100%;
+        height: 50%;
+        order: 2;
+        max-height: 50vh;
+        overflow-y: auto;
+    }
+    
+    .create-llm-main {
+        width: 100%;
+        height: 50%;
+        order: 1;
+    }
+    
+    .humanoid-viewport {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .setting-item {
+        margin-bottom: 10px;
+    }
+    
+    /* Override grid layout for mobile */
+    .attribute-grid {
+        grid-template-columns: 1fr !important;
+        gap: 10px;
+    }
+    
+    /* Show tooltips on tap for mobile */
+    .attribute-item {
+        position: relative;
+    }
+    
+    .attribute-description {
+        display: block !important;
+        font-size: 0.8rem;
+        color: #aaa;
+    }
+    
+    #llm-collection-ui .collection-container {
+        flex-direction: column;
+    }
+    
+    #llm-collection-ui .collection-viewport {
+        height: 50vh !important;
+    }
+    
+    #llm-collection-ui .llm-list {
+        max-height: 40vh;
+        overflow-y: auto;
+    }
+    
+    /* Color picker larger touchable area */
+    .color-input {
+        width: 100px !important;
+        height: 80px !important;
+    }
+    
+    /* Adjust detail panel for mobile */
+    #llm-details-panel {
+        width: 90%;
+        max-width: 90vw;
+    }
+    
+    .llm-detail-viewport {
+        height: 200px;
+    }
+    
+    /* Make form inputs more touch-friendly */
+    .setting-input, .setting-select {
+        padding: 12px;
+        font-size: 16px;
+    }
+    
+    textarea.setting-input {
+        min-height: 100px;
+    }
+    
+    /* Make buttons more touch-friendly */
+    .create-llm-button {
+        padding: 15px;
+        font-size: 16px;
+    }
+    
+    .attribute-button {
+        width: 30px;
+        height: 30px;
+    }
+    
+    /* Make selected item more obvious on mobile */
+    .llm-list-item.selected {
+        background-color: #2a3540;
+        border-left: 5px solid #3cb371;
+        transform: scale(1.02);
+    }
+    
+    /* Adjust the collection footer buttons for mobile */
+    .collection-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .collection-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Add compact mode class */
+.compact-mode .settings-group {
+    padding: 8px;
+    margin-bottom: 8px;
+}
+
+.compact-mode .setting-item {
+    margin-bottom: 6px;
+}
+
+.compact-mode textarea.setting-input {
+    min-height: 50px;
+}
+
+/* Attribute grid responsive sizing */
+.compact-mode .attribute-grid {
+    gap: 5px;
+}
+
+.compact-mode .attribute-item {
+    padding: 5px;
+}
+
+.compact-mode .attribute-header {
+    margin-bottom: 2px;
+}
+
+.compact-mode .attribute-name {
+    font-size: 0.9rem;
+}
+
+.compact-mode .attribute-value {
+    height: 15px;
+}

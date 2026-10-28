@@ -1,0 +1,45 @@
+/* Styles for music player toggle button */
+.music-toggle-triangle {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 0;
+    border-bottom: 15px solid rgba(60, 179, 113, 0.8);
+    border-top: 0;
+    cursor: pointer;
+    z-index: 2001;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.music-toggle-triangle:hover {
+    border-bottom-color: rgba(60, 179, 113, 1);
+}
+
+.music-toggle-triangle:active {
+    transform: scale(0.95);
+}
+
+.music-toggle-triangle.hidden {
+    transform: rotate(180deg);
+    border-left: 0;
+    border-right: 15px solid transparent;
+    border-bottom: 0;
+    border-top: 15px solid rgba(60, 179, 113, 0.8);
+}
+
+@media screen and (max-width: 768px) {
+    .music-toggle-triangle {
+        border-left: 18px solid transparent;
+        border-bottom: 18px solid rgba(60, 179, 113, 0.8);
+    }
+    
+    .music-toggle-triangle.hidden {
+        border-right: 18px solid transparent;
+        border-top: 18px solid rgba(60, 179, 113, 0.8);
+    }
+}
+
+

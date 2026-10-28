@@ -1,0 +1,104 @@
+/* Styles for 3D manipulation controls */
+.manipulation-controls {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 8px;
+}
+
+.control-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+}
+
+.control-group-label {
+    width: 70px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.control-button {
+    width: 30px;
+    height: 30px;
+    background-color: #444;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.control-button:hover {
+    background-color: #3cb371;
+    transform: scale(1.05);
+}
+
+.control-button:active {
+    transform: scale(0.95);
+}
+
+.control-button svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
+.control-button.active {
+    background-color: #3cb371;
+    box-shadow: 0 0 5px rgba(60, 179, 113, 0.5);
+}
+
+.axis-x { color: #ff5555; }
+.axis-y { color: #55ff55; }
+.axis-z { color: #5555ff; }
+
+.control-value {
+    font-size: 0.9rem;
+    color: #3cb371;
+    min-width: 60px;
+    text-align: center;
+    padding: 4px 6px;
+    border-radius: 3px;
+    transition: background-color 0.2s;
+    font-weight: bold;
+}
+
+.control-value:hover {
+    background-color: rgba(60, 179, 113, 0.2);
+    cursor: text;
+    box-shadow: 0 0 3px rgba(60, 179, 113, 0.5);
+}
+
+.control-value input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    text-align: center;
+}
+
+.no-selection-message {
+    color: #aaa;
+    font-style: italic;
+    text-align: center;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
+@media screen and (max-width: 768px) {
+    .control-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .control-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}

@@ -1,0 +1,198 @@
+/* Styles for plot hover info panel */
+.plot-info-panel {
+    position: absolute;
+    z-index: 100;
+    background-color: rgba(40, 40, 40, 0.9);
+    border: 2px solid #3cb371;
+    border-radius: 8px;
+    padding: 0;
+    width: 250px;
+    pointer-events: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    font-family: 'Arial', sans-serif;
+    color: white;
+    user-select: none;
+    overflow: hidden;
+    transition: opacity 0.2s;
+}
+
+.plot-info-header {
+    background-color: #3cb371;
+    color: white;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.plot-info-content {
+    padding: 10px 12px;
+}
+
+.plot-info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.plot-info-label {
+    font-weight: bold;
+    color: #aaa;
+}
+
+.plot-info-value {
+    color: white;
+}
+
+.plot-info-value.available {
+    color: #5cff9d;
+}
+
+.plot-info-value.unavailable {
+    color: #ffcc5c; 
+}
+
+/* Added style for Full status */
+.plot-info-value.full {
+    color: #ff5c5c; 
+    font-weight: bold;
+}
+
+.plot-info-value.websim-credits {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.plot-info-description {
+    margin-top: 10px;
+    font-style: italic;
+    color: #ddd;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 5px;
+}
+
+.credit-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    vertical-align: middle;
+    background-color: #c0c0c0;
+    border: 1px solid #a0a0a0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3), inset 0 1px 1px rgba(255,255,255,0.5);
+    padding: 2px;
+    box-sizing: content-box;
+}
+
+.plot-info-requirements {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+}
+
+.requirements-title {
+    font-weight: bold;
+    color: #f1c40f;
+    margin-bottom: 6px;
+    font-size: 0.9rem;
+}
+
+.requirements-icons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.requirement-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    background-color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    position: relative;
+    transition: border-color 0.3s; 
+}
+
+.requirement-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+    transition: filter 0.3s; 
+}
+
+.requirement-icon.assistant { border: 2px solid #3cb371; }
+.requirement-icon.creator { border: 2px solid #e67e22; }
+.requirement-icon.researcher { border: 2px solid #3498db; }
+.requirement-icon.companion { border: 2px solid #9b59b6; }
+.requirement-icon.humanoid { border: 2px solid #f1c40f; }
+
+/* Checkmark styles */
+.requirement-met {
+    border-color: #5cff9d; 
+}
+
+.requirement-met svg {
+    filter: grayscale(50%) opacity(70%); 
+}
+
+.requirement-met::after {
+    content: '✔';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 16px;
+    height: 16px;
+    background-color: #2ecc71; 
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Mobile adjustments for fixed position */
+@media screen and (max-width: 768px) {
+    .plot-info-panel.mobile-fixed {
+        position: fixed;
+        left: 50%;
+        bottom: 20px; 
+        top: auto; 
+        transform: translateX(-50%);
+        width: 90%; 
+        max-width: 400px;
+        z-index: 1001; 
+    }
+
+    .credit-icon {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .requirement-icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .requirement-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .requirement-met::after {
+        width: 14px;
+        height: 14px;
+        font-size: 10px;
+        line-height: 14px;
+        top: -4px;
+        right: -4px;
+    }
+}

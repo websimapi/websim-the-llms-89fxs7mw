@@ -1,0 +1,72 @@
+/* Styles for TTS voice selector */
+.tts-voice-selector {
+    margin-top: 15px;
+    border-top: 1px solid rgba(60, 179, 113, 0.3);
+    padding-top: 15px;
+}
+
+.voice-selection-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.setting-select#llm-tts-voice {
+    flex: 1;
+}
+
+.show-all-languages {
+    display: flex;
+    align-items: center;
+    background-color: #444;
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: background-color 0.3s, transform 0.1s;
+    cursor: pointer;
+    border: 1px solid rgba(60, 179, 113, 0.4);
+}
+
+.show-all-languages:hover {
+    background-color: rgba(60, 179, 113, 0.3);
+    transform: translateY(-1px);
+}
+
+.show-all-languages:active {
+    transform: translateY(1px);
+}
+
+.show-all-languages.enabled {
+    background-color: rgba(60, 179, 113, 0.7);
+}
+
+.show-all-label {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 100%;
+    justify-content: space-between;
+    white-space: nowrap;
+}
+
+.setting-checkbox {
+    display: none;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .voice-selection-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .show-all-label {
+        font-size: 1rem;
+    }
+    
+    .show-all-languages {
+        padding: 10px 15px;
+    }
+}

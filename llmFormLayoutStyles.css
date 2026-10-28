@@ -1,0 +1,89 @@
+/* New CSS file for specific form layout adjustments */
+
+.name-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between label and input */
+}
+
+.name-input-container .setting-label {
+    margin-bottom: 0; /* Remove bottom margin from label */
+    flex-shrink: 0; /* Prevent label from shrinking */
+    width: auto; /* Allow label to take its natural width */
+    white-space: nowrap; /* Prevent label text wrapping */
+}
+
+.name-input-container .setting-input {
+    flex-grow: 1; /* Allow input to take remaining space */
+}
+
+/* New styles for basic info layout */
+.basic-info-layout {
+    display: flex;
+    align-items: center; /* Vertically align image and name input */
+    gap: 15px; /* Space between image and name input */
+    margin-bottom: 15px; /* Spacing below this combined element */
+}
+
+.basic-info-layout .profile-image-display {
+    flex-shrink: 0; /* Prevent image container from shrinking */
+}
+
+.basic-info-layout .setting-item { /* This is the name setting item */
+    flex-grow: 1; /* Allow name input item to take remaining space */
+    margin-bottom: 0; /* Remove margin since wrapper has it */
+}
+
+/* Adjust profile image size/style in this context */
+.basic-info-layout .profile-image-container {
+    width: 60px; /* Smaller size */
+    height: 60px;
+    border-radius: 50%; /* Make it circular */
+    background-color: #333; /* Darker background for placeholder */
+    border: 2px solid #555;
+}
+.basic-info-layout .profile-image-placeholder {
+    font-size: 0.8rem;
+    padding: 5px;
+    display: flex; /* Added for centering */
+    justify-content: center; /* Added for centering */
+    align-items: center; /* Added for centering */
+    color: #888;
+    height: 100%;
+}
+.basic-info-layout .profile-image {
+     border-radius: 50%; /* Ensure image is circular */
+     object-fit: cover; /* Cover the area */
+}
+
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .name-input-container {
+        flex-direction: column; /* Stack label and input vertically */
+        align-items: flex-start; /* Align items to the start */
+        gap: 5px; /* Adjust vertical spacing */
+    }
+
+    .name-input-container .setting-label {
+        margin-bottom: 5px; /* Add back some margin for vertical layout */
+    }
+
+    /* Adjust basic info layout for mobile */
+    .basic-info-layout {
+        flex-direction: column; /* Stack image and name */
+        align-items: flex-start; /* Align to left */
+        gap: 10px;
+    }
+    .basic-info-layout .profile-image-container {
+        width: 80px; /* Slightly larger on mobile */
+        height: 80px;
+        margin-bottom: 5px; /* Space below image */
+    }
+    .basic-info-layout .setting-item {
+        width: 100%; /* Take full width */
+    }
+    .basic-info-layout .name-input-container {
+         width: 100%; /* Ensure name container takes full width */
+    }
+}

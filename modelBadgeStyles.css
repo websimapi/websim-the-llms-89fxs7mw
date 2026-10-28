@@ -1,0 +1,86 @@
+/* New file for model badge styles */
+.model-badge-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.model-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #333;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.model-badge:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+}
+
+.model-badge.selected {
+    border-color: #3cb371;
+    background-color: rgba(60, 179, 113, 0.2);
+}
+
+.model-badge-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.model-badge-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.model-badge-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Different model type colors */
+.model-badge.assistant {
+    border-left: 4px solid #3cb371;
+}
+
+.model-badge.creator {
+    border-left: 4px solid #e67e22;
+}
+
+.model-badge.researcher {
+    border-left: 4px solid #3498db;
+}
+
+.model-badge.companion {
+    border-left: 4px solid #9b59b6;
+}
+
+.model-badge.humanoid {
+    border-left: 4px solid #f1c40f;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+    .model-badge {
+        padding: 10px 15px;
+    }
+    
+    .model-badge-label {
+        font-size: 1rem;
+    }
+    
+    .model-badge-icon {
+        width: 28px;
+        height: 28px;
+    }
+}

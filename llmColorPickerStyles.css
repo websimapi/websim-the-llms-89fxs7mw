@@ -1,0 +1,65 @@
+/* New CSS file for color picker related styles */
+.color-picker-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.color-input {
+    width: 80px !important;
+    height: 60px !important;
+    padding: 0 !important;
+    border: 3px solid #555;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: currentColor;
+}
+
+.color-input:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(60, 179, 113, 0.5);
+}
+
+.color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.color-input::-webkit-color-swatch {
+    border: none;
+    border-radius: 7px;
+}
+
+.color-input::-moz-color-swatch {
+    border: none;
+    border-radius: 7px;
+}
+
+.selected-mesh-name {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgba(60, 179, 113, 0.2);
+    border-radius: 4px;
+    color: #3cb371;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    text-transform: capitalize;
+}
+
+.selected-mesh-name.hidden {
+    opacity: 0;
+}
+
+.part-type {
+    color: #fff;
+    font-weight: normal;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-left: 5px;
+    padding: 2px 5px;
+    background-color: rgba(60, 179, 113, 0.3);
+    border-radius: 3px;
+}

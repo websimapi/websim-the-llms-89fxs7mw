@@ -1,0 +1,297 @@
+/* Camera button styles */
+.camera-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(60, 179, 113, 0.8);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 100;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.camera-button:hover {
+    background-color: rgba(60, 179, 113, 1);
+    transform: scale(1.05);
+}
+
+.camera-button:active {
+    transform: scale(0.95);
+}
+
+.camera-button svg {
+    width: 24px;
+    height: 24px;
+}
+
+.camera-button.capturing {
+    background-color: #ff4444;
+    animation: pulse-capture 1s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulse-capture {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Profile image preview container */
+.profile-image-preview-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    background-color: #222;
+    border: 2px solid #3cb371;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.profile-image-preview-container.hidden {
+    display: none;
+}
+
+.profile-image-preview-container.saved {
+    border-color: #3cb371;
+    box-shadow: 0 0 20px rgba(60, 179, 113, 0.8);
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #3cb371;
+    color: white;
+    font-weight: bold;
+}
+
+.close-preview {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.preview-content {
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    position: relative;
+    background-color: #111;
+}
+
+#profile-image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.preview-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
+
+.profile-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(60, 179, 113, 0.3);
+    border-radius: 50%;
+    border-top-color: #3cb371;
+    animation: spin 1s linear infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.profile-loading-message {
+    font-size: 0.9rem;
+}
+
+.profile-error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: #ff4444;
+    text-align: center;
+    padding: 20px;
+}
+
+.preview-actions {
+    display: flex;
+    padding: 15px;
+    gap: 10px;
+    justify-content: center;
+    background-color: #1a1a1a;
+    border-top: 1px solid #333;
+}
+
+.preview-button {
+    padding: 8px 16px;
+    background-color: #444;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.preview-button:hover {
+    background-color: #555;
+}
+
+.preview-button.primary {
+    background-color: #3cb371;
+}
+
+.preview-button.primary:hover {
+    background-color: #2a8c5a;
+}
+
+/* Profile image display (used in basic info and potentially other places) */
+.profile-image-display {
+}
+
+.profile-image-header {
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.profile-image-container {
+    width: 100%;
+    height: 150px;
+    background-color: #222;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.profile-image-placeholder {
+    color: #666;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* LLM list profile images */
+.llm-list-item.with-image {
+    grid-template-columns: auto 1fr auto;
+    display: grid;
+    gap: 15px;
+}
+
+.llm-list-image-container {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #444;
+}
+
+.llm-list-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.llm-list-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    background-color: #333;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.llm-list-image-placeholder:hover {
+    background-color: #444;
+    color: #3cb371;
+}
+
+.camera-placeholder {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.camera-placeholder:hover {
+    transform: scale(1.05);
+    border-color: #3cb371;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .profile-image-preview-container {
+        width: 90%;
+    }
+
+    .camera-button {
+        bottom: 10px;
+        right: 10px;
+    }
+
+    .llm-list-image-container {
+        width: 50px;
+        height: 50px;
+    }
+}
